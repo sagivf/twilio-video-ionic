@@ -82,12 +82,8 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <plugin name="cordova-plugin-media" spec="^5.0.2" />
     <plugin name="cordova-plugin-device" spec="^2.0.2" />
-    <plugin name="cordova-plugin-media-capture" spec="^3.0.2" />
-    <plugin name="cordova-plugin-android-permissions" spec="^1.0.0" />
     <plugin name="cordova.plugins.diagnostic" spec="^4.0.8" />
     <plugin name="cordova-opentok-android-permissions" spec="^1.0.1" />
-    <plugin name="cordova-plugin-audioinput" spec="^1.0.1" />
     <engine name="android" spec="7.0.0" />
 </widget>

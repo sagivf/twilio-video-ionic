@@ -76,6 +76,13 @@ export class HomePage {
     });
   }
 
+  getPermissions() {
+    return this.diagnostic.requestRuntimePermissions([
+      this.diagnostic.permission.CAMERA,
+      this.diagnostic.permission.RECORD_AUDIO
+    ]);
+  }
+
   fetch() {
     if (this.token) {
       return Promise.resolve();
@@ -87,16 +94,7 @@ export class HomePage {
   }
 
   buttonPreview() {
-    // this.androidPermissions.requestPermissions(
-    //   [
-    //     this.androidPermissions.PERMISSION.CAMERA,
-    //     this.androidPermissions.PERMISSION.MODIFY_AUDIO_SETTINGS,
-    //     this.androidPermissions.PERMISSION.RECORD_AUDIO
-    //   ]
-    this.diagnostic.requestRuntimePermissions([
-      this.diagnostic.permission.CAMERA,
-      this.diagnostic.permission.RECORD_AUDIO
-    ]).then(() => {
+    this.getPermissions().then(() => {
       const localTracksPromise = this.previewTracks
         ? Promise.resolve(this.previewTracks)
         : Twilio.Video.createLocalTracks();
@@ -192,8 +190,10 @@ export class HomePage {
       connectOptions.tracks = this.previewTracks;
     }
 
-
-    this.fetch().then(() => {
+    Promise.all([
+      this.getPermissions(),
+      this.fetch()
+    ]).then(() => {
       // Join the Room with the token from the server and the
       // LocalParticipant's Tracks.
       Twilio.Video.connect(this.token, connectOptions).then(this.roomJoined, function(error) {
