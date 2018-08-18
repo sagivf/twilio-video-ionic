@@ -1,12 +1,33 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      Ionic Twillllio Video
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+<ion-content>
+  <div id="remote-media"></div>
+  <div id="controls" text-center>
+    <div id="preview">
+      <p class="instructions">Hello Beautiful</p>
+      <div id="local-media"></div>
+      <ion-button shape="round" color="primary"
+                  (click)="buttonPreview()">Preview My Camera</ion-button>
+    </div>
+    <div id="room-controls">
+      <ion-item color="light">
+        <ion-label position="fixed">Room Name:</ion-label>
+        <ion-input type="text" placeholder="Enter a room name" name="roomName" [(ngModel)]="roomName" >
+        </ion-input>
+      </ion-item>
+      <ion-button shape="round" color="primary"
+                  (click)="joinRoom()"
+                  [hidden]="hideJoinRoom">Join Room</ion-button>
+      <ion-button shape="round" color="primary"
+                  (click)="leaveRoom()"
+                  [hidden]="hideLeaveRoom">Leave Room</ion-button>
+    </div>
+    <div id="log"></div>
+  </div>
 </ion-content>

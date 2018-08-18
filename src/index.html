@@ -6,6 +6,8 @@
 
   <base href="/" />
 
+  <!--<meta http-equiv="Content-Security-Policy" content="connect-src https://ecs.us1.twilio.com wss://endpoint.twilio.com wss://sdkgw.us1.twilio.com https://802e033e.ngrok.io http://10.0.0.8:8100 ws://10.0.0.8:8100; script-src https://media.twiliocdn.com 'self' 'unsafe-eval'; media-src 'self' mediastream: blob:">-->
+  <!--<meta http-equiv="Content-Security-Policy" content="media-src: 'self' mediastream: blob:;">-->
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
@@ -16,6 +18,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
+  <script src="https://media.twiliocdn.com/sdk/js/video/releases/2.0.0-beta1/twilio-video.min.js"></script>
+  <!--<script src="node_modules/zone.js/dist/zone.js"></script>-->
+  <!--<script src="node_modules/zone.js/dist/webapis-rtc-peer-connection.js"></script>-->
 </head>
 <body>
   <app-root></app-root>
