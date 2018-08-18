@@ -81,7 +81,6 @@ export class HomePage {
       return Promise.resolve();
     }
     return this.http.get<any>(`${domain}/token`).toPromise().then(data => {
-      alert(data.token)
       this.identity = data.identity;
       this.token = data.token;
     });
@@ -94,27 +93,26 @@ export class HomePage {
     //     this.androidPermissions.PERMISSION.MODIFY_AUDIO_SETTINGS,
     //     this.androidPermissions.PERMISSION.RECORD_AUDIO
     //   ]
-    // ).then(() => {
-    this.diagnostic.requestMicrophoneAuthorization().then(() => {
-      this.diagnostic.requestCameraAuthorization().then(() => {
-        const localTracksPromise = this.previewTracks
-          ? Promise.resolve(this.previewTracks)
-          : Twilio.Video.createLocalTracks();
+    this.diagnostic.requestRuntimePermissions([
+      this.diagnostic.permission.CAMERA,
+      this.diagnostic.permission.RECORD_AUDIO
+    ]).then(() => {
+      const localTracksPromise = this.previewTracks
+        ? Promise.resolve(this.previewTracks)
+        : Twilio.Video.createLocalTracks();
 
-        localTracksPromise.then(tracks => {
-          this.previewTracks = tracks;
-          (<any>window).previewTracks = this.previewTracks;
-          const previewContainer = document.getElementById('local-media');
-          if (!previewContainer.querySelector('video')) {
-            attachTracks(tracks, previewContainer);
-          }
-        }, function (error) {
-          console.error('Unable to access local media', error);
-          log('Unable to access Camera and Microphone');
-        });
+      localTracksPromise.then(tracks => {
+        this.previewTracks = tracks;
+        (<any>window).previewTracks = this.previewTracks;
+        const previewContainer = document.getElementById('local-media');
+        if (!previewContainer.querySelector('video')) {
+          attachTracks(tracks, previewContainer);
+        }
+      }, function (error) {
+        console.error('Unable to access local media', error);
+        log('Unable to access Camera and Microphone');
       });
     });
-    // });
   }
 
   // Successfully connected!
