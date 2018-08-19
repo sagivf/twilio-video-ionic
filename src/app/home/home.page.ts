@@ -1,9 +1,9 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-//import { AndroidPermissions } from '@ionic-native/android-permissions';
+// import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 
-const domain = 'https://849710c0.ngrok.io';
+const domain = 'https://3ebc1a1d.ngrok.io';
 
 declare var Twilio: any;
 
